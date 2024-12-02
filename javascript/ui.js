@@ -422,8 +422,8 @@ onOptionsChanged(function() {
         "CreativeML Open RAIL++-M License": {
             "uri": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/blob/main/LICENSE.md",
             "usable": "🙆",
-            "adult": "-",
-            "commercially": "-"
+            "adult": "true",
+            "commercially": "true"
         },
         "CreativeML Open RAIL-M license": {
             "uri": "https://huggingface.co/spaces/CompVis/stable-diffusion-license",
@@ -452,7 +452,7 @@ onOptionsChanged(function() {
         var model_data = model_list[sd_checkpoint_hash];
         if (model_data && licence_list[model_data['licence']]) {
             var licence = licence_list[model_data['licence']];
-            licence_elem.textContent = model_data['licence'] + ( licence['usable'] ? '🙆‍♀️' : '❌️' );
+            licence_elem.textContent = model_data['licence'] + ":" + licence['usable'] ;
             licence_elem.title = model_data['licence'];
             licence_elem.href = licence["uri"];
         } else {
