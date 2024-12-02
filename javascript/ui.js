@@ -341,6 +341,125 @@ onOptionsChanged(function() {
         elem.title = sd_checkpoint_hash;
         elem.href = "https://google.com/search?q=" + sd_checkpoint_hash;
     }
+
+    
+    // for Licence check
+    var model_list = {
+        "e869ac7d6942cb327d68d5ed83a40447aadf20e0c3358d98b2cc9e270db0da26": {
+            "name": "stabilityai/sdxl-turbo",
+            "uri": "https://huggingface.co/stabilityai/sdxl-turbo",
+            "version": "1.0fp16",
+            "filename": "sd_xl_turbo_1.0_fp16.safetensors",
+            "licence": "SDXL-Turbo License" },
+        "31e35c80fc4829d14f90153f4c74cd59c90b779f6afe05a74cd6120b893f7e5b": {
+            "name": "stabilityai/stable-diffusion-xl-base-1.0",
+            "uri": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0",
+            "version": "1.0",
+            "filename": "sd_xl_base_1.0.safetensors",
+            "licence": "CreativeML Open RAIL++-M License" },
+        "1a189f0be69d6106a48548e7626207dddd7042a418dbf372cefd05e0cdba61b6": {
+            "name": "stable-diffusion-v1-5/stable-diffusion-v1-5",
+            "uri": "https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5",
+            "version": "1.5-pruned",
+            "filename": "v1-5-pruned.safetensors",
+            "licence": "CreativeML Open RAIL-M license" },
+        "6ce0161689b3853acaa03779ec93eafe75a02f4ced659bee03f50797806fa2fa": {
+            "name": "stable-diffusion-v1-5/stable-diffusion-v1-5",
+            "uri": "https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5",
+            "version": "1.5-pruned-emaonly",
+            "filename": "v1-5-pruned.safetensors",
+            "licence": "CreativeML Open RAIL-M license" },
+        "aa54192e22483438f4032b87b1f22d98705f7f2ce2dd4e0cfa6bcf70d3bed258": {
+            "name": "AingDiffusion",
+            "uri": "https://civitai.com/models/34553",
+            "version": "11.3",
+            "filename": "34553.safetensors",
+            "licence": "CreativeML Open RAIL-M license" },
+        "d4620223b4f1694e9284826edee9c3750a3aa2a2e1a2624c6f4b46777d72dd30": {
+            "name": "规则深背景/A Regular Deep Background/奥行のあるいつもの背景",
+            "uri": "https://civitai.com/models/113262",
+            "filename": "113262.safetensor",
+            "licence": "CreativeML Open RAIL-M license" },
+        "1a17bcd93dc12034b4b8e6b2787f34a7ca250fb3344cb036768d3525745adb8c": {
+            "name": "Beautiful Realistic Asians",
+            "uri": "https://civitai.com/models/25494",
+            "version": "7",
+            "filename": "25494.safetensors",
+            "licence": "CreativeML Open RAIL-M license" },
+        "a310b4c195d6c388398ac8a57c6b197fc1d0f4d8db051a9b06b900f902670241": {
+            "name": "CounterfeitXL",
+            "uri": "https://civitai.com/models/118406",
+            "version": "2.5",
+            "filename": "118406.safetensors",
+            "licence": "CreativeML Open RAIL++-M License" },
+        "62ccb8fe414a86643ba72d8590cb2f55d93080aa1eb2f7c3519e81b5c0be0a9d": {
+            "name": "kaodiiLandscapeMix - day",
+            "uri": "https://civitai.com/models/92321",
+            "version": "1.0",
+            "filename": "92321.safetensors",
+            "licence": "CreativeML Open RAIL-M license" },
+        "61bea4195201870bcd2c7002de9922772b32db6add8380e8e17d4dd6d8869307": {
+            "name": "kaodiiLandscapeMix - night",
+            "uri": "https://civitai.com/models/94097",
+            "version": "1.0",
+            "filename": "94097.safetensors",
+            "licence": "CreativeML Open RAIL-M license" },
+        "9fd745b262fd0253a1bf7a0d70faa2bcc12d1ec2ba7b921c30f733ba41ad8aba": {
+            "name": "MomijiMix",
+            "uri": "https://civitai.com/models/176410",
+            "version": "4.0",
+            "filename": "176410.safetonsors",
+            "licence": "CreativeML Open RAIL-M license" }
+    };
+    var licence_list = {
+        "SDXL-Turbo License": {
+            "uri": "https://stability.ai/license",
+            "usable": "商用利用は要契約",
+            "adult": "-",
+            "commercially": "-"
+        },
+        "CreativeML Open RAIL++-M License": {
+            "uri": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/blob/main/LICENSE.md",
+            "usable": "🙆",
+            "adult": "-",
+            "commercially": "-"
+        },
+        "CreativeML Open RAIL-M license": {
+            "uri": "https://huggingface.co/spaces/CompVis/stable-diffusion-license",
+            "usable": "🙆",
+            "adult": "true",
+            "commercially": "true"
+        }
+    };
+
+    var version_elem = gradioApp().getElementById('model_version');
+    if (version_elem) {
+        var model_data = model_list[sd_checkpoint_hash];
+        if (model_data) {
+            version_elem.textContent = model_data['name'] + '-v' + model_data['version'];
+            version_elem.title = model_data['name'];
+            version_elem.href = model_data['uri'];
+        } else {
+            version_elem.textContent = "未登録モデル❌️";
+            version_elem.title = "";
+            version_elem.href = "";
+        }
+    }
+
+    var licence_elem = gradioApp().getElementById('sd_lisence');
+    if (licence_elem) {
+        var model_data = model_list[sd_checkpoint_hash];
+        if (model_data && licence_list[model_data['licence']]) {
+            var licence = licence_list[model_data['licence']];
+            licence_elem.textContent = model_data['licence'] + ( licence['usable'] ? '🙆‍♀️' : '❌️' );
+            licence_elem.title = model_data['licence'];
+            licence_elem.href = licence["uri"];
+        } else {
+            licence_elem.textContent = "要調査❌️";
+            licence_elem.title = "";
+            licence_elem.href = "";
+        }
+    }
 });
 
 let txt2img_textarea, img2img_textarea = undefined;

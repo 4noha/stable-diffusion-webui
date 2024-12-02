@@ -1201,6 +1201,10 @@ xformers: {xformers_version}
 gradio: {gr.__version__}
 &#x2000;•&#x2000;
 checkpoint: <a id="sd_checkpoint_hash">N/A</a>
+&#x2000;•&#x2000;
+model: <a id="model_version">N/A</a>
+&#x2000;•&#x2000;
+lisence: <a id="sd_lisence">N/A</a>
 """
 
 
