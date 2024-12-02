@@ -378,6 +378,7 @@ onOptionsChanged(function() {
         "d4620223b4f1694e9284826edee9c3750a3aa2a2e1a2624c6f4b46777d72dd30": {
             "name": "规则深背景/A Regular Deep Background/奥行のあるいつもの背景",
             "uri": "https://civitai.com/models/113262",
+            "version": "1.0",
             "filename": "113262.safetensor",
             "licence": "CreativeML Open RAIL-M license" },
         "1a17bcd93dc12034b4b8e6b2787f34a7ca250fb3344cb036768d3525745adb8c": {
